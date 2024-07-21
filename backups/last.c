@@ -10,43 +10,63 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
+#include <unistd.h>
 
-void	print(int x, int y, int height, int width)
+void	ft_putchar(char c)
 {
-	if (height == 0 || height == y - 1)
+	write(1, &c, 1);
+}
+
+void	print_matriz(int x, int y)
+{
+	int	altura;
+	int	largura;
+
+	altura = 0;
+	while (altura < y)
 	{
-		if (width == 0)
-			ft_putchar('A');
-		else if (width < x - 1)
-			ft_putchar('B');
-		else
-			ft_putchar ('C');
-	}
-	else
-	{
-		if (width == 0 || width == x - 1)
-			ft_putchar('B');
-		else
-			ft_putchar(' ');
+		largura = 0;
+		while (largura < x)
+		{
+			if (altura == 0 || altura == y - 1)
+			{
+				if (largura == 0)
+				{
+					ft_putchar('A');
+				}
+				else if (largura < x - 1)
+				{
+					ft_putchar('B');
+				}
+				else
+				{
+					ft_putchar ('C');
+				}
+			}
+			else
+			{
+				if (largura == 0 || largura == x -1)
+				{
+					ft_putchar('B');
+				}
+				else
+				{
+					ft_putchar(' ');
+				}
+			}
+			largura++;
+		}
+		ft_putchar('\n');
+		altura++;
 	}
 }
 
-void	rush(int x, int y)
+int main(void)
 {
-	int	height;
-	int	width;
-
-	height = 0;
-	while (height < y)
-	{
-		width = 0;
-		while (width < x)
-		{
-			print(x, y, height, width);
-			width++;
-		}
-		ft_putchar('\n');
-		height++;
-	}
+	print_matriz(5, 3);
+	print_matriz(5, 1);
+	print_matriz(1, 1);
+	print_matriz(1, 5);
+	print_matriz(4, 4);
+  return (0);
 }

@@ -27,5 +27,9 @@ int	main(void)
 	rush(1, 5);
 	ft_putchar(10);
 	rush(4, 4);
+	ft_putchar(10);
+	rush(25, 47);
+	ft_putchar(10);
+	rush(36, 6);
 	return (0);
 }
